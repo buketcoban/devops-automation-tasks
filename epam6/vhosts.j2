@@ -1,0 +1,17 @@
+{# vhosts.j2 #}
+{% for vhost in vhosts %}
+<VirtualHost *:80>
+  ServerName {{ vhost.server_name }}
+  DocumentRoot {{ vhost.document_root }}
+  ServerAdmin {{ vhost.server_admin }}
+  {% if vhost.directory_path %}
+  <Directory "{{ vhost.directory_path }}">
+     AllowOverride {{ vhost.allow_override }}
+     Options {{ vhost.options }}
+     Order {{ vhost.order }}
+     Allow from {{ vhost.allow_from }}
+  </Directory>
+  {% endif %}
+</VirtualHost>
+
+{% endfor %}

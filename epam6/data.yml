@@ -1,0 +1,27 @@
+vhosts:
+  - server_name: www.domain.tld
+    document_root: /www/domain
+    server_admin: www-admin@foo.example.com
+    directory_path: /usr/local/httpd/htdocs
+    allow_override: All
+    options: Indexes FollowSymLinks
+    order: allow,deny
+    allow_from: all
+
+  - server_name: blog.example.com
+    document_root: /var/www/blog
+    server_admin: blog-admin@example.com
+    directory_path: /var/www/blog/public
+    allow_override: None
+    options: FollowSymLinks
+    order: allow,deny
+    allow_from: all
+
+  - server_name: api.example.com
+    document_root: /var/www/api
+    server_admin: api-admin@example.com
+    directory_path: /var/www/api/htdocs
+    allow_override: All
+    options: Indexes FollowSymLinks MultiViews
+    order: deny,allow
+    allow_from: all
